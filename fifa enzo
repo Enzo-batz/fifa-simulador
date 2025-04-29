@@ -1,0 +1,25 @@
+class Team:
+    def __init__(self, name, attack, midfield, defense):
+        self.name = name
+        self.attack = attack
+        self.midfield = midfield
+        self.defense = defense
+        import random
+
+def simulate_match(team1, team2):
+    team1_score = random.randint(0, team1.attack + team1.midfield) - team2.defense
+    team2_score = random.randint(0, team2.attack + team2.midfield) - team1.defense
+
+    team1_score = max(0, team1_score)
+    team2_score = max(0, team2_score)
+
+    return team1_score, team2_score
+    from teams import Team
+from match import simulate_match
+
+team1 = Team("Real Madrid", 85, 80, 82)
+team2 = Team("Barcelona", 84, 81, 80)
+
+score1, score2 = simulate_match(team1, team2)
+
+print(f"{team1.name} {score1} x {score2} {team2.name}")
